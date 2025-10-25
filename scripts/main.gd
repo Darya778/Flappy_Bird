@@ -1,6 +1,6 @@
 extends Node2D
 
-const SCROLL_SPEED: float = 10.0
+const SCROLL_SPEED: float = 15.0
 var game_started: bool = false
 
 var layers = []
@@ -14,7 +14,7 @@ func _ready():
 		},
 		{
 			"nodes": [get_node("flo_1"), get_node("flo_2")],
-			"speed": SCROLL_SPEED * 2,
+			"speed": SCROLL_SPEED * 3,
 			"width": get_node("flo_1").texture.get_size().x
 		}
 	]
