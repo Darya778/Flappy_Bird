@@ -36,5 +36,3 @@ func spawn_pipe():
 	add_child(pipe)
 	
 	pipe.set("speed", pipe_speed)
-	
-	print("Pipe spawned at ", pipe.position)
