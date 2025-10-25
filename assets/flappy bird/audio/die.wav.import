@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dbkqn7ns40xjt"
+path="res://.godot/imported/die.wav-88927b1f08d7f91bbce325aa1c7ab3a4.sample"
+
+[deps]
+
+source_file="res://assets/flappy bird/audio/die.wav"
+dest_files=["res://.godot/imported/die.wav-88927b1f08d7f91bbce325aa1c7ab3a4.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://dufu18txo30g7"]
+
+[ext_resource type="Script" uid="uid://bfx13nf07gn5r" path="res://scripts/main.gd" id="1_0wfyh"]
+[ext_resource type="Texture2D" uid="uid://g6ye8kjud0nn" path="res://assets/background.jpg" id="2_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://dtil27cxmnbj5" path="res://scenes/bird.tscn" id="3_sugp2"]
+[ext_resource type="Texture2D" uid="uid://dnxq378xjqx84" path="res://assets/ground.png" id="5_tbgi4"]
+[ext_resource type="PackedScene" uid="uid://cm1shgg6wygj1" path="res://scenes/pipe_spawner.tscn" id="6_tefeu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0wfyh"]
+size = Vector2(700, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sugp2"]
+size = Vector2(713, 10)
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_0wfyh")
+
+[node name="bg_1" type="Sprite2D" parent="."]
+position = Vector2(463, 457)
+scale = Vector2(2, 2)
+texture = ExtResource("2_0wfyh")
+
+[node name="bg_2" type="Sprite2D" parent="."]
+position = Vector2(1389, 457)
+scale = Vector2(2, 2)
+texture = ExtResource("2_0wfyh")
+
+[node name="Bird" parent="." instance=ExtResource("3_sugp2")]
+position = Vector2(350, 400)
+
+[node name="flo_1" type="Sprite2D" parent="."]
+position = Vector2(463, 879)
+scale = Vector2(1.10238, 0.3)
+texture = ExtResource("5_tbgi4")
+
+[node name="flo_2" type="Sprite2D" parent="."]
+position = Vector2(1389, 879)
+scale = Vector2(1.10238, 0.3)
+texture = ExtResource("5_tbgi4")
+
+[node name="PipeSpawner" parent="." instance=ExtResource("6_tefeu")]
+
+[node name="floor" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
+position = Vector2(350, 853)
+shape = SubResource("RectangleShape2D_0wfyh")
+
+[node name="roof" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="roof"]
+position = Vector2(349.5, -5)
+shape = SubResource("RectangleShape2D_sugp2")
