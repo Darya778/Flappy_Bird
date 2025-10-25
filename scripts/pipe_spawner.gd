@@ -8,8 +8,16 @@ extends Node2D
 @export var pipe_speed: float = 200.0
 
 var timer := 0.0
+var game_started: bool = false
 
 func _process(delta):
+	if not game_started:
+		if Input.is_action_just_pressed("ui_accept") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+			game_started = true
+			print("Game started!")
+		return
+	
+	
 	timer += delta
 	if timer >= spawn_interval:
 		timer = 0
