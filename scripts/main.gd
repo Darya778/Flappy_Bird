@@ -1,45 +1,43 @@
 extends Node2D
 
-const SCROLL_SPEED: float = 15.0
+@export var bg_speed := 20.0      # фон движется медленно
+@export var floor_speed := 120.0  # земля движется быстрее
+
+# массивы спрайтов
+var bg_sprites := []   # сюда добавим bg_1, bg_2, bg_3
+var floor_sprites := [] # сюда добавим flo_1, flo_2, flo_3
+
+var bg_width: float
+var floor_width: float
 var game_started: bool = false
 
-var layers = []
-
 func _ready():
-	layers = [
-		{
-			"nodes": [get_node("bg_1"), get_node("bg_2")],
-			"speed": SCROLL_SPEED,
-			"width": get_node("bg_1").texture.get_size().x
-		},
-		{
-			"nodes": [get_node("flo_1"), get_node("flo_2")],
-			"speed": SCROLL_SPEED * 3,
-			"width": get_node("flo_1").texture.get_size().x
-		}
-	]
+	bg_sprites = [$bg_1, $bg_2, $bg_3]
+	floor_sprites = [$flo_1, $flo_2, $flo_3]
+
+	bg_width = bg_sprites[0].texture.get_size().x * bg_sprites[0].scale.x
+	floor_width = floor_sprites[0].texture.get_size().x * floor_sprites[0].scale.x
+
+	for i in range(3):
+		bg_sprites[i].position.x = bg_width * i
+		floor_sprites[i].position.x = floor_width * i
 
 func _process(delta):
-	# Ожидание старта
-	if not game_started:
-		if Input.is_action_just_pressed("ui_accept") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
-			game_started = true
-		return
+	
+		
+	_scroll_layer(bg_sprites, bg_speed, delta)
+	_scroll_layer(floor_sprites, floor_speed, delta)
 
-	for layer in layers:
-		_scroll_layer(layer, delta)
+func _scroll_layer(sprites: Array, speed: float, delta: float):
+	var width = sprites[0].texture.get_size().x * sprites[0].scale.x
 
-func _scroll_layer(layer: Dictionary, delta: float) -> void:
-	var nodes = layer["nodes"]
-	var speed = layer["speed"]
-	var width = layer["width"]
+	for sprite in sprites:
+		sprite.position.x -= speed * delta
 
-	for n in nodes:
-		n.position.x -= speed * delta
-
-		if n.position.x <= -width:
+	for i in range(sprites.size()):
+		if sprites[i].position.x <= -width:
 			var max_x = -INF
-			for m in nodes:
-				if m != n:
-					max_x = max(max_x, m.position.x)
-			n.position.x = max_x + width
+			for j in range(sprites.size()):
+				if j != i:
+					max_x = max(max_x, sprites[j].position.x)
+			sprites[i].position.x = max_x + width
