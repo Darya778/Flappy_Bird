@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://dufu18txo30g7"]
+[gd_scene load_steps=10 format=3 uid="uid://dufu18txo30g7"]
 
 [ext_resource type="Script" uid="uid://bfx13nf07gn5r" path="res://scripts/main.gd" id="1_0wfyh"]
 [ext_resource type="Texture2D" uid="uid://cms46bhii5n7p" path="res://assets/background_2.jpg" id="2_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://dtil27cxmnbj5" path="res://scenes/bird.tscn" id="3_sugp2"]
 [ext_resource type="Texture2D" uid="uid://dnxq378xjqx84" path="res://assets/ground.png" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://cm1shgg6wygj1" path="res://scenes/pipe_spawner.tscn" id="6_tefeu"]
+[ext_resource type="Texture2D" uid="uid://f44y1v722iw8" path="res://assets/numbers/0.png" id="7_o6xl0"]
+[ext_resource type="Script" uid="uid://be6y76x7ea1i2" path="res://scripts/flash.gd" id="7_tipki"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wfyh"]
 size = Vector2(700, 30)
@@ -30,10 +32,10 @@ position = Vector2(2315, 457)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_tbgi4")
 
-[node name="Bird" parent="." instance=ExtResource("3_sugp2")]
-position = Vector2(350, 400)
-
 [node name="PipeSpawner" parent="." instance=ExtResource("6_tefeu")]
+
+[node name="Bird" parent="." instance=ExtResource("3_sugp2")]
+position = Vector2(294, 430)
 
 [node name="flo_1" type="Sprite2D" parent="."]
 position = Vector2(463, 879)
@@ -61,3 +63,21 @@ shape = SubResource("RectangleShape2D_0wfyh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="roof"]
 position = Vector2(349.5, -5)
 shape = SubResource("RectangleShape2D_sugp2")
+
+[node name="Flash" type="ColorRect" parent="."]
+offset_right = 600.0
+offset_bottom = 924.0
+color = Color(1, 1, 1, 0)
+script = ExtResource("7_tipki")
+
+[node name="Score_one" type="Sprite2D" parent="."]
+position = Vector2(303.99997, 104)
+scale = Vector2(1.167, 1.167)
+texture = ExtResource("7_o6xl0")
+
+[node name="Score_ten" type="Sprite2D" parent="."]
+position = Vector2(269, 104.00001)
+scale = Vector2(1.167, 1.167)
+texture = ExtResource("7_o6xl0")
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]

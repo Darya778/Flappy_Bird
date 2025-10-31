@@ -64,3 +64,5 @@ libraries = {
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_twsrt")
+
+[node name="Sounds" type="AudioStreamPlayer2D" parent="."]

@@ -3,14 +3,18 @@ extends Node2D
 @export var bg_speed := 20.0
 @export var floor_speed := 120.0
 
+@onready var bird = get_node("Bird")
+@onready var sound = get_node("Sound")
 var bg_sprites := []
 var floor_sprites := []
 
 var bg_width: float
 var floor_width: float
 var game_started: bool = false
-
+var game_end: bool = false
+const SFX_DIE = preload("res://assets/audio/die.wav")
 func _ready():
+	bird.hit.connect(_endgame)
 	bg_sprites = [get_node("bg_1"), get_node("bg_2"), get_node("bg_3")]
 	floor_sprites = [get_node("flo_1"), get_node("flo_2"), get_node("flo_3")]
 
@@ -26,9 +30,9 @@ func _process(delta):
 		if Input.is_action_just_pressed("ui_accept") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 			game_started = true
 		return
-		
-	_scroll_layer(bg_sprites, bg_speed, delta)
-	_scroll_layer(floor_sprites, floor_speed, delta)
+	if not game_end:
+		_scroll_layer(bg_sprites, bg_speed, delta)
+		_scroll_layer(floor_sprites, floor_speed, delta)
 
 func _scroll_layer(sprites: Array, speed: float, delta: float):
 	var width = sprites[0].texture.get_size().x * sprites[0].scale.x
@@ -43,3 +47,10 @@ func _scroll_layer(sprites: Array, speed: float, delta: float):
 				if j != i:
 					max_x = max(max_x, sprites[j].position.x)
 			sprites[i].position.x = max_x + width
+func _endgame():
+	sound.stream = SFX_DIE
+	sound.play()
+	var flash = get_node("Flash")
+	flash.flash()
+	game_end=true
+	print("Game end")

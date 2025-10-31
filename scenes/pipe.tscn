@@ -1,14 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://flrb0xfb344n"]
+[gd_scene load_steps=7 format=3 uid="uid://flrb0xfb344n"]
 
 [ext_resource type="Script" uid="uid://b6ywgb6v0bvd2" path="res://scripts/pipe.gd" id="1_8p0di"]
 [ext_resource type="Texture2D" uid="uid://ciu4eplsc6xuy" path="res://assets/pipes.png" id="1_arpqm"]
 [ext_resource type="Texture2D" uid="uid://dgv6hmfcv01iy" path="res://assets/pipe_green.png" id="2_8p0di"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4ybk5"]
-size = Vector2(30, 230)
+size = Vector2(30, 230.5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ejsh2"]
-size = Vector2(30, 230)
+size = Vector2(30, 230.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8p0di"]
+size = Vector2(5, 63)
 
 [node name="Pipe" type="Node2D"]
 scale = Vector2(2, 2)
@@ -44,9 +47,15 @@ vframes = 4
 frame = 2
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 146)
+position = Vector2(0, 145.75)
 shape = SubResource("RectangleShape2D_4ybk5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, -146)
+position = Vector2(0, -145.75)
 shape = SubResource("RectangleShape2D_ejsh2")
+
+[node name="Check" type="Area2D" parent="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D/Check"]
+position = Vector2(22, 0)
+shape = SubResource("RectangleShape2D_8p0di")

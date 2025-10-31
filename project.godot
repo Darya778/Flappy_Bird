@@ -10,12 +10,18 @@ config_version=5
 
 [application]
 
-config/name="flappy_bird"
+config/name="Flappy_birr"
 run/main_scene="uid://dufu18txo30g7"
-config/features=PackedStringArray("4.4", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
 [display]
 
-window/size/viewport_width=700
-window/size/viewport_height=914
+window/size/viewport_width=600
+window/size/viewport_height=900
+window/size/initial_position_type=0
+
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
