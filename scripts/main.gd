@@ -5,6 +5,9 @@ extends Node2D
 
 @onready var bird = get_node("Bird")
 @onready var sound = get_node("Sound")
+
+@onready var dead_screen = get_node("DeadScreen")
+
 var bg_sprites := []
 var floor_sprites := []
 
@@ -14,6 +17,7 @@ var game_started: bool = false
 var game_end: bool = false
 const SFX_DIE = preload("res://assets/audio/die.wav")
 func _ready():
+	dead_screen.visible = false;
 	bird.hit.connect(_endgame)
 	bg_sprites = [get_node("bg_1"), get_node("bg_2"), get_node("bg_3")]
 	floor_sprites = [get_node("flo_1"), get_node("flo_2"), get_node("flo_3")]
@@ -48,9 +52,18 @@ func _scroll_layer(sprites: Array, speed: float, delta: float):
 					max_x = max(max_x, sprites[j].position.x)
 			sprites[i].position.x = max_x + width
 func _endgame():
+	dead_screen.visible = true;
 	sound.stream = SFX_DIE
 	sound.play()
 	var flash = get_node("Flash")
 	flash.flash()
 	game_end=true
 	print("Game end")
+
+
+func _on_restart_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main.tscn")
+
+
+func _on_menu_button_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

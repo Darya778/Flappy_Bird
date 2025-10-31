@@ -1,0 +1,297 @@
+[gd_scene load_steps=12 format=3 uid="uid://cygqgcdhq42jt"]
+
+[ext_resource type="Script" uid="uid://bfe2pa5swtlek" path="res://scripts/main_menu.gd" id="1_bqqt6"]
+[ext_resource type="Texture2D" uid="uid://cms46bhii5n7p" path="res://assets/background_2.jpg" id="1_l6cm7"]
+[ext_resource type="Texture2D" uid="uid://dyveneoxv6i40" path="res://assets/bird_animation.png" id="2_ekxnf"]
+[ext_resource type="Texture2D" uid="uid://dnxq378xjqx84" path="res://assets/ground.png" id="3_wu84c"]
+[ext_resource type="FontFile" uid="uid://cn348ave2w0ub" path="res://assets/fonts/FlappyBirdRegular.ttf" id="5_8ln24"]
+
+[sub_resource type="Animation" id="Animation_ekxnf"]
+resource_name = "idle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BirdSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_ekxnf")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BirdSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BirdSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0, 2, 0]
+}
+
+[sub_resource type="Animation" id="Animation_bqqt6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BirdSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_ekxnf")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BirdSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BirdSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("BirdSprite:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(496, 226)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("GameName:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(120, 188)]
+}
+
+[sub_resource type="Animation" id="Animation_wu84c"]
+resource_name = "idle_transforming"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BirdSprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(466, 226), Vector2(466, 206), Vector2(466, 226)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("GameName:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(90, 188), Vector2(90, 168), Vector2(90, 188)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("BirdSprite:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 2, 0, 2, 0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wu84c"]
+_data = {
+&"RESET": SubResource("Animation_bqqt6"),
+&"idle": SubResource("Animation_ekxnf"),
+&"idle_transforming": SubResource("Animation_wu84c")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vue75"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+corner_detail = 20
+shadow_size = 5
+shadow_offset = Vector2(3, 5)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l6cm7"]
+bg_color = Color(0.7792914, 0.7792914, 0.7792912, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+
+[node name="main_menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+script = ExtResource("1_bqqt6")
+
+[node name="Background" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="flo_1" type="Sprite2D" parent="Background"]
+position = Vector2(463, 879)
+scale = Vector2(1.10238, 0.3)
+texture = ExtResource("3_wu84c")
+
+[node name="flo_2" type="Sprite2D" parent="Background"]
+position = Vector2(1389, 879)
+scale = Vector2(1.10238, 0.3)
+texture = ExtResource("3_wu84c")
+
+[node name="flo_3" type="Sprite2D" parent="Background"]
+position = Vector2(2315, 879)
+scale = Vector2(1.10238, 0.3)
+texture = ExtResource("3_wu84c")
+
+[node name="bg_1" type="Sprite2D" parent="Background"]
+position = Vector2(463, 457)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_l6cm7")
+
+[node name="bg_2" type="Sprite2D" parent="Background"]
+position = Vector2(1389, 457)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_l6cm7")
+
+[node name="bg_3" type="Sprite2D" parent="Background"]
+position = Vector2(2315, 457)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_l6cm7")
+
+[node name="BirdNode" type="Node2D" parent="Background"]
+
+[node name="GameName" type="Label" parent="Background/BirdNode"]
+offset_left = 120.0
+offset_top = 188.0
+offset_right = 424.0
+offset_bottom = 265.00018
+theme_override_fonts/font = ExtResource("5_8ln24")
+theme_override_font_sizes/font_size = 84
+text = "Flappy Bird"
+
+[node name="BirdSprite" type="Sprite2D" parent="Background/BirdNode"]
+position = Vector2(496, 226)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_ekxnf")
+hframes = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/BirdNode"]
+libraries = {
+&"": SubResource("AnimationLibrary_wu84c")
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -84.25
+offset_top = -97.5
+offset_right = 84.25
+offset_bottom = 64.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="PlayButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_vue75")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l6cm7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vue75")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_vue75")
+theme_override_styles/focus = SubResource("StyleBoxFlat_vue75")
+text = "Play"
+
+[node name="ExitButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxFlat_vue75")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_l6cm7")
+theme_override_styles/hover = SubResource("StyleBoxFlat_vue75")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_vue75")
+theme_override_styles/focus = SubResource("StyleBoxFlat_vue75")
+text = "Exit"
+
+[connection signal="pressed" from="VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
