@@ -55,7 +55,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y += GREVITY * delta
 		velocity.y = clamp(velocity.y, -JUMP_FORCE, MAX_FALL_SPEED)
 
-		if Input.is_action_just_pressed("ui_accept") or Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
+		if Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("click"):
 			sound.stream = SFX_JUMP
 			sound.play()
 			velocity.y = -JUMP_FORCE
