@@ -7,6 +7,11 @@ extends Node2D
 @onready var sound = get_node("Sound")
 
 @onready var dead_screen = get_node("DeadScreen")
+@onready var cur_score_label = get_node("DeadScreen/ScoreContainer/CurScore")
+@onready var high_score_label = get_node("DeadScreen/ScoreContainer/HighScore")
+
+@onready var score_one = get_node("Score_one")
+@onready var score_ten = get_node("Score_ten")
 
 var bg_sprites := []
 var floor_sprites := []
@@ -16,7 +21,24 @@ var floor_width: float
 var game_started: bool = false
 var game_end: bool = false
 const SFX_DIE = preload("res://assets/audio/die.wav")
+
+var score: int = 0
+var high_score: int
+var high_score_changed: bool = false
+
+func add_score(amount: int):
+	score += amount
+	print(score)
+
 func _ready():
+	
+	# Подгрузка файла с рекордом
+	if FileAccess.file_exists("res://scripts/highscore.txt"):
+		var file = FileAccess.open("res://scripts/highscore.txt", FileAccess.READ)
+		var line = file.get_line()
+		high_score = int(line)
+		file.close()
+	
 	dead_screen.visible = false;
 	bird.hit.connect(_endgame)
 	bg_sprites = [get_node("bg_1"), get_node("bg_2"), get_node("bg_3")]
@@ -52,6 +74,15 @@ func _scroll_layer(sprites: Array, speed: float, delta: float):
 					max_x = max(max_x, sprites[j].position.x)
 			sprites[i].position.x = max_x + width
 func _endgame():
+	if score > high_score:
+		high_score_changed = true
+		high_score = score
+	cur_score_label.text = "Current score: " + str(score)
+	high_score_label.text = "High score: " + str(high_score)
+	
+	score_one.visible = false
+	score_ten.visible = false
+	
 	dead_screen.visible = true;
 	sound.stream = SFX_DIE
 	sound.play()
@@ -60,10 +91,19 @@ func _endgame():
 	game_end=true
 	print("Game end")
 
+func store_high_score() -> void:
+	if FileAccess.file_exists("res://scripts/highscore.txt"):
+		var file = FileAccess.open("res://scripts/highscore.txt", FileAccess.WRITE)
+		file.store_line(str(high_score))
+		file.close()
 
 func _on_restart_button_pressed() -> void:
+	if high_score_changed:
+		store_high_score()
 	get_tree().change_scene_to_file("res://scenes/main.tscn")
 
 
 func _on_menu_button_pressed() -> void:
+	if high_score_changed:
+		store_high_score()
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")

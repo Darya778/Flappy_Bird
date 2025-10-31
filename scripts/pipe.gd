@@ -4,6 +4,8 @@ extends Node2D
 var counted:bool = false
 signal passed
 
+@onready var main = get_tree().get_current_scene()
+
 @onready var score_zone = get_node("StaticBody2D/Check")
 
 func _ready():
@@ -16,6 +18,7 @@ func _process(delta):
 		queue_free()
 func _on_score_zone_entered(body):
 	if body.name == "Bird" and not counted:
+		main.add_score(1)
 		counted = true
 		score_zone.set_deferred("monitoring",false)
 		emit_signal("passed")
