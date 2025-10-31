@@ -58,7 +58,7 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_pressed("ui_accept") or Input.is_action_just_pressed("click"):
 			sound.stream = SFX_JUMP
 			sound.play()
-			velocity.y = -JUMP_FORCE
+			velocity.y = -JUMP_FORCE *1.5
 			anim.play("fly")
 
 		
