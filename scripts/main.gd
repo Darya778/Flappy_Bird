@@ -28,7 +28,7 @@ var high_score_changed: bool = false
 
 func add_score(amount: int):
 	score += amount
-	print(score)
+	#print(score)
 
 func _ready():
 	
