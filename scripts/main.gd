@@ -92,10 +92,9 @@ func _endgame():
 	print("Game end")
 
 func store_high_score() -> void:
-	if FileAccess.file_exists("res://scripts/highscore.txt"):
-		var file = FileAccess.open("res://scripts/highscore.txt", FileAccess.WRITE)
-		file.store_line(str(high_score))
-		file.close()
+	var file = FileAccess.open("res://scripts/highscore.txt", FileAccess.WRITE)
+	file.store_line(str(high_score))
+	file.close()
 
 func _on_restart_button_pressed() -> void:
 	if high_score_changed:
