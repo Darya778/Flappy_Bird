@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dnxq378xjqx84" path="res://assets/ground.png" id="5_tbgi4"]
 [ext_resource type="PackedScene" uid="uid://cm1shgg6wygj1" path="res://scenes/pipe_spawner.tscn" id="6_tefeu"]
 [ext_resource type="Texture2D" uid="uid://f44y1v722iw8" path="res://assets/numbers/0.png" id="7_o6xl0"]
-[ext_resource type="Script" uid="uid://be6y76x7ea1i2" path="res://scripts/flash.gd" id="7_tipki"]
+[ext_resource type="Script" path="res://scripts/flash.gd" id="7_tipki"]
 [ext_resource type="FontFile" uid="uid://cn348ave2w0ub" path="res://assets/fonts/FlappyBirdRegular.ttf" id="8_tipki"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wfyh"]
@@ -16,7 +16,7 @@ size = Vector2(700, 30)
 size = Vector2(713, 10)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_85g3d"]
-bg_color = Color(0, 0, 0, 0.13333334)
+bg_color = Color(0, 0, 0, 0.133333)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o6xl0"]
 bg_color = Color(1, 1, 1, 1)
@@ -29,7 +29,7 @@ shadow_size = 5
 shadow_offset = Vector2(3, 5)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tipki"]
-bg_color = Color(0.7792914, 0.7792914, 0.7792912, 1)
+bg_color = Color(0.779291, 0.779291, 0.779291, 1)
 corner_radius_top_left = 16
 corner_radius_top_right = 16
 corner_radius_bottom_right = 16
@@ -92,12 +92,12 @@ color = Color(1, 1, 1, 0)
 script = ExtResource("7_tipki")
 
 [node name="Score_one" type="Sprite2D" parent="."]
-position = Vector2(303.99997, 104)
+position = Vector2(304, 104)
 scale = Vector2(1.167, 1.167)
 texture = ExtResource("7_o6xl0")
 
 [node name="Score_ten" type="Sprite2D" parent="."]
-position = Vector2(269, 104.00001)
+position = Vector2(269, 104)
 scale = Vector2(1.167, 1.167)
 texture = ExtResource("7_o6xl0")
 
@@ -158,37 +158,37 @@ theme_override_constants/separation = 12
 
 [node name="RestartButton" type="Button" parent="DeadScreen/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = SubResource("StyleBoxFlat_o6xl0")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_tipki")
-theme_override_styles/hover = SubResource("StyleBoxFlat_o6xl0")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_o6xl0")
 theme_override_styles/focus = SubResource("StyleBoxFlat_o6xl0")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_o6xl0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_o6xl0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tipki")
+theme_override_styles/normal = SubResource("StyleBoxFlat_o6xl0")
 text = "Restart
 "
 
 [node name="MenuButton" type="Button" parent="DeadScreen/VBoxContainer"]
 layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
-theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
-theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
-theme_override_colors/icon_normal_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = SubResource("StyleBoxFlat_o6xl0")
-theme_override_styles/pressed = SubResource("StyleBoxFlat_tipki")
-theme_override_styles/hover = SubResource("StyleBoxFlat_o6xl0")
-theme_override_styles/disabled = SubResource("StyleBoxFlat_o6xl0")
 theme_override_styles/focus = SubResource("StyleBoxFlat_o6xl0")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_o6xl0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_o6xl0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_tipki")
+theme_override_styles/normal = SubResource("StyleBoxFlat_o6xl0")
 text = "Exit"
 
 [connection signal="pressed" from="DeadScreen/VBoxContainer/RestartButton" to="." method="_on_restart_button_pressed"]

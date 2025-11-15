@@ -53,6 +53,7 @@ scale = Vector2(0.2, 0.2)
 script = ExtResource("1_hq4t0")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-70, 0)
 texture = ExtResource("2_hq4t0")
 hframes = 3
 
@@ -63,6 +64,8 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-64.99999, 1.1368684e-13)
 shape = SubResource("CircleShape2D_twsrt")
 
 [node name="Sounds" type="AudioStreamPlayer2D" parent="."]
+position = Vector2(-3.8146973e-06, 0)

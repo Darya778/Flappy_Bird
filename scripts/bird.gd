@@ -4,8 +4,8 @@ const GREVITY: float = 1400.0
 const JUMP_FORCE: float = 300.0
 const MAX_FALL_SPEED: float = 500.0  # ограничение скорости падения
 const TILT_SPEED: float = 6.0    # скорость реакции наклона
-const MAX_TILT_UP: float = -25.0 # максимальный угол при взлёте 
-const MAX_TILT_DOWN: float = 70.0 # максимальный угол при падении
+const MAX_TILT_UP: float = -40.0 # максимальный угол при взлёте 
+const MAX_TILT_DOWN: float = 60.0 # максимальный угол при падении
 const SFX_JUMP = preload("res://assets/audio/wing.wav")
 const SFX_HIT = preload("res://assets/audio/hit.wav")
 
